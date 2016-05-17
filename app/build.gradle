@@ -14,7 +14,7 @@ model {
         }
         buildTypes {
             release {
-                minifyEnabled false
+                minifyEnabled true
 //                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
                 proguardFiles.add(file("proguard-rules.pro"))
             }

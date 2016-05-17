@@ -83,7 +83,7 @@ public class FileSelectorActivity extends ListActivity {
         });
 
         try {
-            String baseFilePath = Environment.getExternalStorageDirectory().getCanonicalPath() + "/BBasic/";
+            String baseFilePath = Environment.getExternalStorageDirectory().getCanonicalPath() + "/BBasic";
             File file = new File(baseFilePath);
             if (!file.exists()) {
                 if(!file.mkdir()){

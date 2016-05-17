@@ -646,6 +646,7 @@ public class VirtualMachine {
      * 返回错误代码：-1 lib不含图片或者文件损坏；-2 图片id不能小于0；-3 lib图片有误，size应大于0，请检查；-4 没有打开权限
      */
     public int loadres(String filename, int id) {
+//        Log.e("BBASIC", "loadres(" + filename + ")");
         int picSaveLoc = -1;
         try {
             filename = filename.replace("\\","/");
