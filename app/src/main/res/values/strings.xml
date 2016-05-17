@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">BB虚拟机</string>
+    <string name="app_name">Basic虚拟机</string>
     <string name="no_bin_files_in_folder">这个目录中没有.bin文件</string>
 </resources>

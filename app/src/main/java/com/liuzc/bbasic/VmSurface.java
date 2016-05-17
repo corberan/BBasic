@@ -223,7 +223,7 @@ public class VmSurface extends SurfaceView implements SurfaceHolder.Callback {
             float y = vm_screen_rect.top / rate;
 
             while (!isOver){
-                if (whichGet == -1) continue;
+                if (whichGet == -1 || whichGet == SURFACEGOT) continue;
                 try {
                     if((sfcancas = surfaceHolder.lockCanvas()) != null){
 

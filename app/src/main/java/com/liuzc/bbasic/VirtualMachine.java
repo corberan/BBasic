@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.Log;
 import android.view.View;
 
@@ -105,20 +106,22 @@ public class VirtualMachine {
     }
 
     public void flippage(int page){
-        //Log.e("","flippage(page"+page+")");
+//        long time = System.currentTimeMillis();
+//        Log.e("BBASIC","flippage(page"+page+")");
         //waitkey();
         if(page>-1 && page+1<Pages.size()) {
             vmSurface.flippage(Pages.get(page+1),true);
-            if (flippagePauseMS > 0) {
-                synchronized (sync_bytes) {
-                    try {
-                        sync_bytes.wait(flippagePauseMS);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
+//            if (flippagePauseMS > 0) {
+//                synchronized (sync_bytes) {
+//                    try {
+//                        sync_bytes.wait(flippagePauseMS);
+//                    } catch (InterruptedException ex) {
+//                        ex.printStackTrace();
+//                    }
+//                }
+//            }
         }
+//        Log.e("BBASIC", "cast " + (System.currentTimeMillis() - time));
     }
 
     public void freeres(int pic_id){
@@ -132,18 +135,20 @@ public class VirtualMachine {
     }
 
     public void showpic(int page,int pic,int screen_x,int screen_y,int w,int h,int cut_x,int cut_y,int mode){
+//        long time = System.currentTimeMillis();
         if(page>-2 && pic>-1 && pic<Pics.size() && w>-1 && h>-1 && mode>-1) {
 
-            //Log.e("","showpic(page"+page+",pic"+pic+","+screen_x+","+screen_y+","+w+","+h+","+cut_x+","+cut_y+","+mode+")");
+//            Log.e("BBASIC","showpic(page"+page+",pic"+pic+","+screen_x+","+screen_y+","+w+","+h+","+cut_x+","+cut_y+","+mode+")");
             //Log.e("","showpic x="+screen_x);
             if (Pics.get(pic) != null && page<Pages.size() && Pages.get(page+1)!=null) {
                 showpic2page(page, pic, screen_x, screen_y, w, h, cut_x, cut_y, mode);
             }
         }
+//        Log.e("BBASIC", "cast " + (System.currentTimeMillis() - time));
     }
 
     public void bitbltpage(int dest,int src){
-        //Log.e("","bitbitpage("+dest+","+src+")");
+//        Log.e("BBASIC","bitbitpage("+dest+","+src+")");
         //waitkey();
         if(dest>-2 && src>-2 && dest+1<Pages.size() && src+1<Pages.size()){
             Bitmap bitmapDest = Pages.get(dest+1);
@@ -157,7 +162,8 @@ public class VirtualMachine {
     }
 
     public void stretchbltpageEx(int x,int y,int wid,int hgt,int cx,int cy,int dest,int src){
-        //Log.e("","stretchbltpageEx("+x+","+y+","+wid+","+hgt+","+cx+","+cy+","+dest+","+src+")");
+
+//        Log.e("BBASIC","stretchbltpageEx("+x+","+y+","+wid+","+hgt+","+cx+","+cy+","+dest+","+src+")");
         if(dest>-2 && src>-2 && dest+1<Pages.size() && src+1<Pages.size() && wid>0 && hgt>0){
             Bitmap bitmapDest ;
             Bitmap bitmapSrc ;
@@ -196,11 +202,29 @@ public class VirtualMachine {
             wid = wid > realWid ? realWid : wid;
             hgt = hgt > realHgt ? realHgt : hgt;
 
+//            Log.e("BBASIC", cx + "," + cy  + "," + wid  + "," + hgt  + "," + x  + "," + y);
+//            long time = System.currentTimeMillis();
+
             Canvas bltcanvas = new Canvas(bitmapDest);
 
-            Bitmap srcCutBmp = Bitmap.createBitmap(bitmapSrc,cx,cy,wid,hgt);
-            bltcanvas.drawBitmap(srcCutBmp,x,y,new Paint());
+//            long timeNewCanvas = System.currentTimeMillis() - time;
+//            time = System.currentTimeMillis();
+
+//            Bitmap srcCutBmp = Bitmap.createBitmap(bitmapSrc,cx,cy,wid,hgt);
+
+//            Log.e("BBASIC", "" + bitmapSrc.hasAlpha() + "" + bitmapSrc.isPremultiplied());
+
+//            long timeCreateBMP = System.currentTimeMillis() - time;
+//            time = System.currentTimeMillis();
+
+            bltcanvas.drawBitmap(bitmapSrc, new Rect(cx,cy,cx+wid,cy+hgt), new Rect(x,y,x+wid,y+hgt), null);
+
+//            bltcanvas.drawBitmap(srcCutBmp,x,y,new Paint());
+
+//            long timeDrawBMP = System.currentTimeMillis() - time;
             //bltcanvas.drawBitmap(bitmapSrc,new Rect(cx,cy,cx+wid,cy+hgt),new Rect(x,y,x+wid,y+hgt), new Paint());
+
+//            Log.e("BBASIC", "timeNewCanvas " + timeNewCanvas + ",timeDrawBMP " + timeDrawBMP);
 
             if(dest==-1) vmSurface.flippage(null,false);
         }
@@ -219,7 +243,7 @@ public class VirtualMachine {
     }
 
     public int deletepage(int page){
-        //Log.e(" deletepage "," page: "+page);
+//        Log.e("BBASIC","deletepage: "+page);
         if(page>-1 && page+1<Pages.size()){// -1页不允许删除
             Pages.set(page + 1,null);//page的删除是填null,pic的删除则会remove,为的是和bb兼容
             Paints.set(page + 1,null);
@@ -230,7 +254,7 @@ public class VirtualMachine {
     }
 
     public void fillpage(int page,int x,int y,int wid,int hgt,int color){
-        //Log.e(""," fillpage("+page+","+x+","+y+","+wid+","+hgt+","+color+")");
+//        Log.e("BBASIC"," fillpage("+page+","+x+","+y+","+wid+","+hgt+","+color+")");
         if(page>-2 && page+1<Pages.size()){
             fillPageWithColor(page, x, y, wid, hgt, color);
         }
@@ -538,6 +562,7 @@ public class VirtualMachine {
     }
 
     public int waitkey(){
+//        Log.e("BBASIC", "waiting key ...");
         int keycode;
         while(true) {
 //            if (System.currentTimeMillis() - lastKeyPressedTime < 1000) continue;
@@ -556,7 +581,7 @@ public class VirtualMachine {
                 }
             }
         }
-//        Log.e("",keycode+"=waitkey()");
+//        Log.e("BBASIC",keycode+"=waitkey()");
         keyBoard.setKeyValue(0);
 //        lastKeyPressedTime = System.currentTimeMillis();
         return keycode;
@@ -745,7 +770,7 @@ public class VirtualMachine {
             ex.printStackTrace();
         }
         //Log.e(" 载入的图片编号为为：","" + (Pics.size() - 1));
-        //Log.e("","pic"+picSaveLoc+"=loadres(\""+filename+"\","+id+")");
+//        Log.e("BBASIC","pic"+picSaveLoc+"=loadres(\""+filename+"\","+id+")");
         return picSaveLoc;
     }
 
@@ -824,12 +849,13 @@ public class VirtualMachine {
         if (x < picWidth && y < picHeight && screen_x < PageWidth && screen_y < PageHeight) {
             if(x + w > picWidth) w = picWidth - x;
             if(y + h > picHeight) h = picHeight - y;
-            //Log.e("","x:"+x+",y:"+y+",w"+w+",h"+h);
-            //Log.e("","screen_x:"+screen_x+",screen_y"+screen_y);
-            Bitmap cutBmp = Bitmap.createBitmap(bitmapfromByte,x,y,w,h);
+//            Log.e("BBASIC","x:"+x+",y:"+y+",w"+w+",h"+h);
+//            Log.e("BBASIC","screen_x:"+screen_x+",screen_y"+screen_y);
+//            Bitmap cutBmp = Bitmap.createBitmap(bitmapfromByte,x,y,w,h);
             Canvas showpicCanvas = new Canvas(bitmap4show);
             //showpicCanvas.clipRect(screen_x, screen_y, screen_x + w, screen_y + h);
-            showpicCanvas.drawBitmap(cutBmp, screen_x, screen_y, null);
+//            showpicCanvas.drawBitmap(cutBmp, screen_x, screen_y, null);
+            showpicCanvas.drawBitmap(bitmapfromByte, new Rect(x,y,x+w,y+h), new Rect(screen_x,screen_y,screen_x+w,screen_y+h), null);
 
             if (page == -1) vmSurface.flippage(null,false);
         }

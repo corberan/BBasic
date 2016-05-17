@@ -544,7 +544,7 @@ void VmOut(vdword port,vdword value)
         case 25: VmRegs.R3 = (vint)jenv->CallIntMethod(jthiz,readpixel,*(vdword*)(VirtualMem+i+8),*(vdword*)(VirtualMem+i+4),*(vdword*)(VirtualMem+i));break;
         case 26: jenv->CallVoidMethod(jthiz,freeres,i);break;
         case 27:{
-            clock_t currenttime = clock();
+            long currenttime = clock();
             while(clock()<currenttime+VmRegs.R3*tick);
             break;
         }
