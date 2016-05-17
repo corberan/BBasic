@@ -1,17 +1,17 @@
 /****************************************************************
- * Í¨ÓÃÊý¾ÝÄ£°å£º
- * 1¡£Êý×éÄ£°å(IDataArray)£º
- *    ÓÐÊ±ºò³£³£²Ù×÷Êý×é£¬Èçarray[index]¡£Ä£°åIDataArrayµÄÉè¼ÆÊ¹
- *    µÃÄã¿ÉÒÔËæÒâµØÁé»î¸ù¸ÄÊý×éµÄ´óÐ¡£¬ÏóDelphiÀïÃæµÄSetLength
- *    Ä£°å»á¿ìËÙÖØÐÂ·ÖÅäÄÚ´æ²¢ÇÒ¸´ÖÆÔ­À´µÄÊý¾Ý¡£Èç¹ûÄã°Ñ×Ô¶¯·ÖÅä
- *    ¿ª¹Ø´ò¿ª£¬Ä£°å»á¸ù¾ÝÄã·ÃÎÊµÄÊý×éÔªËØË÷ÒýÖµ×Ô¶¯¸ù¸ÄÄÚ´æ´óÐ¡
- *    ¶øÊ¹Äã²»ÔÙÓÐÄÚ´æ³¬ÏÞµÄ¹ËÂÇ¡£ÔÚÊÍ·ÅÄ£°åÊ±Ä£°å»á×Ô¶¯Çå³ýÕ¼ÓÃ
- *    µÄÄÚ´æ£¬Ä£°åÖ§³ÖÍ¨ÓÃÊý¾ÝºÍ×Ô¶¨Òå½á¹¹£¬µ«²»Ö§³ÖÀà£¬ÓÃ·¨¾ÙÀý
- *               IDataArray<int> myarray;   // Ä£°åÓÃintÀàÐÍ
- *               myarray.SetAutoMode(1);    // ´ò¿ª×Ô¶¯·ÖÅä¿ª¹Ø
- *               myarray[0]=1;              // Ä£°å¶¼×Ô¶¯·ÖÅäÁË
+ * Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½å£º
+ * 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½(IDataArray)ï¿½ï¿½
+ *    ï¿½ï¿½Ê±ï¿½ò³£³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬ï¿½ï¿½array[index]ï¿½ï¿½Ä£ï¿½ï¿½IDataArrayï¿½ï¿½ï¿½ï¿½ï¿½Ê¹
+ *    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Delphiï¿½ï¿½ï¿½ï¿½ï¿½SetLength
+ *    Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ú´æ²¢ï¿½Ò¸ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
+ *    ï¿½ï¿½ï¿½Ø´ò¿ª£ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ð¡
+ *    ï¿½ï¿½Ê¹ï¿½ã²»ï¿½ï¿½ï¿½ï¿½ï¿½Ú´æ³¬ï¿½ÞµÄ¹ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä£ï¿½ï¿½Ê±Ä£ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½
+ *    ï¿½ï¿½ï¿½Ú´æ£¬Ä£ï¿½ï¿½Ö§ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ýºï¿½ï¿½Ô¶ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½à£¬ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
+ *               IDataArray<int> myarray;   // Ä£ï¿½ï¿½ï¿½ï¿½intï¿½ï¿½ï¿½ï¿½
+ *               myarray.SetAutoMode(1);    // ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ä¿ªï¿½ï¿½
+ *               myarray[0]=1;              // Ä£ï¿½å¶¼ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *               myarray[1]=myarray[0]+1;
- * 2¡£·ÖÅäÁÐ±íÄ£°å(ILister)
+ * 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Ä£ï¿½ï¿½(ILister)
  */
 
 #ifndef __I_TEMPLATE_H__
@@ -22,7 +22,7 @@
 #endif
 
 template <class ClassType>
-class IDataArray			// Êý×éÄ£°å
+class IDataArray			// ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 {
 protected:
 	ClassType *TypeData;
@@ -30,7 +30,7 @@ protected:
 	int DataCount;
 	int AutoMode;
 public:
-	int Error;				// ´íÎó¼ÆÊýÆ÷(·ÖÅä´íÎó,Ë÷Òý´íÎóµÈ)
+	int Error;				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	virtual ~IDataArray();
 	IDataArray();
 	IDataArray(int InitSize);

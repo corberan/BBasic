@@ -15,7 +15,7 @@
 #endif
 
 template <class T>
-class IVector			// Êý×éÄ£°å
+class IVector			// ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 {
 protected:
 	T *TypeData;
@@ -24,7 +24,7 @@ protected:
 	unsigned long DataCount;
 	unsigned long BlockLen;
 public:
-	int Error;				// ´íÎó¼ÆÊýÆ÷(·ÖÅä´íÎó,Ë÷Òý´íÎóµÈ)
+	int Error;				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 	IVector();
 	virtual ~IVector();
 	int SetLength(unsigned long NewLen);
