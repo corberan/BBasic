@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +82,18 @@ public class FileSelectorActivity extends ListActivity {
             }
         });
 
-        new refreshFileList_Task().execute(Environment.getExternalStorageDirectory().toString(),".bin");
+        try {
+            String baseFilePath = Environment.getExternalStorageDirectory().getCanonicalPath() + "/BBasic/";
+            File file = new File(baseFilePath);
+            if (!file.exists()) {
+                if(!file.mkdir()){
+                    Toast.makeText(this, "创建BBasic文件夹失败,请检查磁盘写权限", Toast.LENGTH_SHORT).show();
+                }
+            }
+            new refreshFileList_Task().execute(baseFilePath,".bin");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Toast.makeText(this, "请选择程序文件(.bin)", Toast.LENGTH_SHORT).show();
 
