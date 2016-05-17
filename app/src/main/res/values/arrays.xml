@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="msdelay">
+        <item>0.5x</item>
+        <item>1x</item>
+        <item>2x</item>
+        <item>4x</item>
+        <item>无间隔</item>
+    </string-array>
+    <string-array name="msdelay_value">
+        <item>0.5</item>
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="gettick">
+        <item>返回毫秒</item>
+        <item>返回累加</item>
+    </string-array>
+    <string-array name="gettick_value">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    
+    <string-array name="backcolor">
+        <item>经典白</item>
+        <item>护眼绿</item>
+        <item>高端黑</item>
+        <item>天际蓝</item>
+        <item>爵士灰</item>
+        <item>透底酷</item>
+    </string-array>
+    <string-array name="backcolor_value">
+        <item>FFFFFF</item>
+        <item>CBE4CF</item>
+        <item>000000</item>
+        <item>CDE0E6</item>
+        <item>363C48</item>
+        <item>B2B2B2</item>
+    </string-array>
+</resources>

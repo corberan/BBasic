@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:title="全屏模式"
+        android:defaultValue="false"
+        android:key="isfullscreen"/>
+    <ListPreference
+        android:title="延迟时间"
+        android:summary="使用了msdelay的程序会受到影响"
+        android:entries="@array/msdelay"
+        android:entryValues="@array/msdelay_value"
+        android:dialogTitle="选择延迟倍速"
+        android:key="msdelay_time"/>
+    <ListPreference
+        android:title="gettick兼容"
+        android:summary="切换gettick的返回方式"
+        android:entries="@array/gettick"
+        android:entryValues="@array/gettick_value"
+        android:dialogTitle="选择累加可兼容旧应用"
+        android:key="gettick_which"/>
+    <EditTextPreference
+        android:title="画面速度"
+        android:summary="设置flippage的停顿时间"
+        android:defaultValue="0"
+        android:dialogTitle="每次flippage的停顿时间(毫秒)"
+        android:key="flippage_pauseTime"/>
+    <ListPreference
+        android:title="背景颜色"
+        android:entries="@array/backcolor"
+        android:entryValues="@array/backcolor_value"
+        android:dialogTitle="选择一种颜色"
+        android:key="background_color"/>
+</PreferenceScreen>
