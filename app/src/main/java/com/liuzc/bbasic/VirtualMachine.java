@@ -111,15 +111,15 @@ public class VirtualMachine {
         //waitkey();
         if(page>-1 && page+1<Pages.size()) {
             vmSurface.flippage(Pages.get(page+1),true);
-//            if (flippagePauseMS > 0) {
-//                synchronized (sync_bytes) {
-//                    try {
-//                        sync_bytes.wait(flippagePauseMS);
-//                    } catch (InterruptedException ex) {
-//                        ex.printStackTrace();
-//                    }
-//                }
-//            }
+            if (flippagePauseMS > 0) {
+                synchronized (sync_bytes) {
+                    try {
+                        sync_bytes.wait(flippagePauseMS);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
         }
 //        Log.e("BBASIC", "cast " + (System.currentTimeMillis() - time));
     }
