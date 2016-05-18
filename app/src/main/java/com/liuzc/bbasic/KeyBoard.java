@@ -305,13 +305,16 @@ public class KeyBoard extends ImageView {
     }
 
     public int getKeyValue() {
-        int i = keyValue;
+//        int value = keyValue;
+//        lastKeyPressTime = System.currentTimeMillis();
+        return keyValue;
+//        int i = keyValue;
         //keyValue = 0;
-        return i;
+//        return i;
     }
 
     public void setKeyValue(int keyValue) {
-        Log.e("","set0 "+keyValue);
+//        Log.e("","set0 "+keyValue);
         this.keyValue = keyValue;
     }
 
@@ -333,15 +336,15 @@ public class KeyBoard extends ImageView {
                 keyValue = 0;
                 this.invalidate();
             }
-//            }else if (action == MotionEvent.ACTION_MOVE && keyValue != 0){ // !=0是为了不在keyboard刚被贴上时触发事件，阻塞ui
+//            else if (action == MotionEvent.ACTION_MOVE){ // !=0是为了不在keyboard刚被贴上时触发事件，阻塞ui
 //                keyValue = 0;
-////                if (System.currentTimeMillis() - lastKeyPressTime > 80){
-////                    lastKeyPressTime = System.currentTimeMillis();
-////                    x = event.getX() * 480 / KB_wid;
-////                    y = event.getY() * 336 / KB_hgt;
-////                    this.invalidate();
-////                }
-//            }else{
+//                if (System.currentTimeMillis() - lastKeyPressTime > 30){
+//                    lastKeyPressTime = System.currentTimeMillis();
+//                    x = event.getX() * 480 / KB_wid;
+//                    y = event.getY() * 336 / KB_hgt;
+//                    this.invalidate();
+//                }
+//            } else{
 //                keyValue = 0;
 //            }
 //            Log.e("",""+event);

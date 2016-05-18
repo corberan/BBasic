@@ -58,7 +58,7 @@ public class VirtualMachine {
     private int gettick_tick = 0;
 
     private int flippagePauseMS = 0;
-//    private long lastKeyPressedTime = 0;
+    private long lastWaitKeyTime = 0;
 
     private final byte[] sync_bytes = new byte[1];
 
@@ -565,9 +565,11 @@ public class VirtualMachine {
 //        Log.e("BBASIC", "waiting key ...");
         int keycode;
         while(true) {
-//            if (System.currentTimeMillis() - lastKeyPressedTime < 1000) continue;
             if (isOver) return 0;
-            if ((keycode = keyBoard.getKeyValue()) != 0) break;
+            if ((keycode = keyBoard.getKeyValue()) != 0 && System.currentTimeMillis() - lastWaitKeyTime > 100) {
+                lastWaitKeyTime = System.currentTimeMillis();
+                break;
+            }
             keycode = vmSurface.getTouchValue();
             if (keycode < 0) break;
             else if (keycode == 1) {
@@ -582,13 +584,12 @@ public class VirtualMachine {
             }
         }
 //        Log.e("BBASIC",keycode+"=waitkey()");
-        keyBoard.setKeyValue(0);
-//        lastKeyPressedTime = System.currentTimeMillis();
+//        keyBoard.setKeyValue(0);
         return keycode;
     }
 
     public int KeyPress(int key){
-//        Log.e("","keypressed,isOver:"+isOver);
+//        Log.e("BBASIC","keypress(" + key + ")");
         if(isOver) return 0;
         int isPressed = 0;
         if(key == keyBoard.getKeyValue()){
@@ -965,7 +966,7 @@ public class VirtualMachine {
     }
 
     public int openfile(String filename,int port){
-        //Log.e("原始文件名",filename+"长度"+filename.length());
+//        Log.e("BBASIC","openfile(" + filename+"),长度 "+filename.length());
         filename = filename.replace("\\","/");
         filename = filename.replace("//","/");
         if(filename.indexOf("/")==0) filename = filename.substring(1);
